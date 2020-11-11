@@ -11,7 +11,10 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     resolve: {
-        extensions: [".js", ".jsx", ".png", ".jpg", ".svg"],
+        extensions: [".js", ".jsx", ".png", ".jpg", ".svg", ".scss"],
+        alias : {
+            "@features" : path.resolve(__dirname, "src/features")
+        }
     },
     module: {
         rules: [

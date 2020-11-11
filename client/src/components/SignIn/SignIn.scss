@@ -1,0 +1,26 @@
+.SignIn {
+    margin-top: 20vw;
+    .telegram-btn {
+        display: flex;
+        height: 45px;
+        justify-content: center;
+        cursor: pointer;
+        .wrapper-icon {
+            background-color: #4994be;
+            padding: 0px 10px;
+            display: flex;
+            align-items: center;
+            .MuiSvgIcon-root {
+                color: white;
+            }
+        }
+        span {
+            text-transform: uppercase;
+            background-color: #6cc1e3;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0px 15px;
+        }
+    }
+}
