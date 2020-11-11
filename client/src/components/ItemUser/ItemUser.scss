@@ -1,0 +1,37 @@
+@import "../../assets/scss/mixin.scss";
+
+.ItemUser {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 10px;
+    flex-direction: row;
+    cursor: pointer;
+    &:hover {
+        background-color: #f1f1f1;
+    }
+    .info {
+        flex: 1;
+        margin-left: 5px;
+        .top {
+            @include locationItemsListUser;
+            .time {
+                font-size: 11px;
+                color: #999999;
+            }
+        }
+        .bottom {
+            @include locationItemsListUser;
+
+            .text-user {
+                font-size: 14px;
+            }
+            .count {
+                background-color: #bbbbbb;
+                color: white;
+                font-size: 11px;
+                padding: 2px 5px;
+                border-radius: 30px;                
+            }
+        }
+    }
+}

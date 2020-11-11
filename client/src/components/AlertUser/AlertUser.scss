@@ -1,0 +1,38 @@
+.AlertUser {
+    top: 10vw;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    height: 60vh;
+    z-index: 1;
+    width: 40vw;
+    box-shadow: 0px 0px 100px 1000px rgba(0, 0, 0, 0.8);
+    background-color: white;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 20px 25px;
+        .MuiSvgIcon-root {
+            cursor: pointer;
+        }
+    }
+
+    .MuiAvatar-root {
+        width: 60px;
+        height: 60px;
+    }
+    h4 {
+        margin-top: 20px;
+    }
+
+    .footer {
+        color: #999999;
+        padding: 0px 25px 25px 25px;
+    }
+}

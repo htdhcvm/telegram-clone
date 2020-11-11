@@ -1,0 +1,13 @@
+.AlertItemMenu {
+    display: flex;
+    cursor: pointer;
+    margin: 15px 0px;
+    padding: 10px 25px;
+    &:hover {
+        background-color: #f1f1f1;
+    }
+    .MuiSvgIcon-root {
+        margin-right: 25px;
+        color: #a8a8a8;
+    }
+}

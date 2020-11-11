@@ -9,7 +9,7 @@ const PrivateRoute = ({
     ...rest
 }) => {
     let state = useSelector(state => state.user)
-    // console    
+
     console.log(state);
     return (
         <Route
