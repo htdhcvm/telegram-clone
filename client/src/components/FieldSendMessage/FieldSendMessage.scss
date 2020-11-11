@@ -1,0 +1,33 @@
+.FieldSendMessage {
+    border-top: 1px solid #f1f1f1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+        flex: 1;
+        margin: 0px 15px;
+        outline: none;
+        border: none;
+    }
+
+    .clip {
+        transform: rotate(228deg);
+        font-size: 29px;
+    }
+
+    .clip,
+    .smile {
+        color: #b9b9b9;
+        font-size: 25px;
+    }
+
+    .smile {
+        margin-right: 15px;
+    }
+
+    .send {
+        color: #40a7e3;
+        font-size: 28px;
+    }
+}
