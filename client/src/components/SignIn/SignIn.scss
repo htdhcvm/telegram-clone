@@ -1,26 +1,39 @@
+@import "../../assets/scss/mixin.scss";
+
+
 .SignIn {
     margin-top: 20vw;
+    .MuiSvgIcon-root {
+        color: white;
+    }
     .telegram-btn {
-        display: flex;
-        height: 45px;
-        justify-content: center;
-        cursor: pointer;
+        @include signInBtn;
         .wrapper-icon {
-            background-color: #4994be;
-            padding: 0px 10px;
-            display: flex;
-            align-items: center;
-            .MuiSvgIcon-root {
-                color: white;
-            }
+            @include signInBtnIcon(#4994be);
         }
         span {
-            text-transform: uppercase;
-            background-color: #6cc1e3;
-            color: white;
-            display: flex;
-            align-items: center;
-            padding: 0px 15px;
+            @include signInBtnSpan(#6cc1e3);
+        }
+    }
+
+    .github-btn {
+        @include signInBtn;
+        .wrapper-icon {
+            @include signInBtnIcon(#363636);
+        }
+
+        span {
+            @include signInBtnSpan(#444444);
+        }
+    }
+    .yandex-btn {
+        @include signInBtn;
+        .wrapper-icon {
+            @include signInBtnIcon(#ff0501);
+        }
+
+        span {
+            @include signInBtnSpan(#ffdb4d);
         }
     }
 }

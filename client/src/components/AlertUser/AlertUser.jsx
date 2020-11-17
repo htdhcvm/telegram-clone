@@ -23,9 +23,7 @@ const AlertUser = ({ closeMenu }) => {
     });
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getCurrentUser());
-    }, []);
+    
 
 
     const exit = () => {

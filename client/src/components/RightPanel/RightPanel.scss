@@ -1,0 +1,24 @@
+.RightPanel {
+    display: grid;
+    grid-template-areas:
+        'WhomDialog'
+        'ContentDialog'
+        'FieldSendMessage';
+    grid-template-rows: 69px calc(100vh - 119px) 50px;
+    .WhomDialog {
+        grid-area: WhomDialog;
+        padding-left: 10px;
+    }
+
+    .FieldSendMessage {
+        grid-area: FieldSendMessage;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .ContentDialog {
+        grid-area: ContentDialog;
+        margin: 10px 0px 0px 10px;
+        overflow-y: scroll;
+    }
+}

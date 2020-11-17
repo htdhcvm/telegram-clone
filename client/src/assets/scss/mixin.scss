@@ -3,3 +3,28 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@mixin signInBtn {
+    display: flex;
+    height: 45px;
+    justify-content: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+@mixin signInBtnIcon($bg-color) {
+    background-color: $bg-color;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+@mixin signInBtnSpan($bg-color) {
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+    width: 250px;
+    color: white;
+    background-color: $bg-color;
+}

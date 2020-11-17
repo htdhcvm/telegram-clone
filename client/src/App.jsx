@@ -5,7 +5,6 @@ import {
     Switch,
     Route,
     Redirect,
-    useHistory,
 } from 'react-router-dom';
 
 import SignIn from './components/SignIn/SignIn';
@@ -17,22 +16,21 @@ import { checkAuth } from '@features/user/userSlice';
 
 import PrivateRoute from './components/Private/PrivateRoute';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import './App.scss';
 
 const App = () => {
     const dispatch = useDispatch();
-    const history = useHistory();
     let stateUser = useSelector((state) => state.user);
 
     useEffect(() => {
         dispatch(checkAuth());
     }, []);
 
-    console.log(stateUser);
-
     return (
-        // (state.user.status !== true) ? <SignIn /> : <Main/>
         <Router>
+            {stateUser.status === undefined ? <CircularProgress /> : null}
             <Switch>
                 <PrivateRoute component={Main} path='/user/:id' />
                 {stateUser.status === true ? (
@@ -41,8 +39,9 @@ const App = () => {
                             pathname: `/user/${stateUser.id}`,
                         }}
                     />
+                ) : stateUser.status === false ? (
+                    <Route path='/' exact component={SignIn} />
                 ) : null}
-                <Route path='/' exact component={SignIn} />
             </Switch>
         </Router>
     );

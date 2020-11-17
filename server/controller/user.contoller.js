@@ -2,6 +2,7 @@ const ModelUser = require("../model/Users/Users");
 
 module.exports = class User {
     static async getAll(req, res) {
+        console.log(req.session.passport.user);
         return res.send({ users: await ModelUser.getAllNotCurrent(req.session.passport.user) });
     }
 

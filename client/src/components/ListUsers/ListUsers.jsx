@@ -8,20 +8,39 @@ import AlertUser from '../AlertUser/AlertUser';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getAllUsers } from '@features/user/userSlice';
+import { getAllUsers, setWhomDialog } from '@features/user/userSlice';
+import { setIdRoomReduxStore } from '@features/room/roomSlice';
+import { clearMessages } from '@features/messages/messagesSlice';
 
-const ListUsers = () => {
+import socket from '../../connectionSocket';
+
+const ListUsers = ({ openRightPanel }) => {
     const [toggleMenuUser, setToggleMenuUser] = useState(false);
+    const [idRoom, setIdRoom] = useState('');
 
     const dispatch = useDispatch();
-
     const listUsersState = useSelector((state) => state.user.listUsers);
 
     useEffect(() => {
         dispatch(getAllUsers());
+
+        // socket.on('successJoinRoom', _ => {
+        // });
     }, []);
 
-    const toggleMenu = () => {
+    const joinToRoom = async (newIdRoom, name) => {
+        await setIdRoom((prev) => {
+            if (prev.length !== 0) socket.emit('unsubscribeRoom', prev);
+            return newIdRoom;
+        });
+
+        await dispatch(setIdRoomReduxStore(newIdRoom));
+        socket.emit('joinRoom', newIdRoom);
+        dispatch(clearMessages());
+        dispatch(setWhomDialog(name));
+    };
+
+    const openMenu = () => {
         setToggleMenuUser(true);
     };
 
@@ -31,10 +50,18 @@ const ListUsers = () => {
 
     return (
         <div className='ListUsers'>
-            <Manipulate toggleMenu={toggleMenu} />
-            {toggleMenuUser === true ? <AlertUser closeMenu={closeMenu}/> : null}
+            <Manipulate openMenu={openMenu} />
+            {toggleMenuUser === true ? (
+                <AlertUser closeMenu={closeMenu} />
+            ) : null}
             {listUsersState.map((item) => (
-                <ItemUser key={uuidv4()} name={item.name} photo={item.photo} />
+                <ItemUser
+                    key={uuidv4()}
+                    joinToRoom={joinToRoom}
+                    name={item.name}
+                    photo={item.photo}
+                    id={item.id}
+                />
             ))}
         </div>
     );

@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const passport = require("passport");
-const {checkUserMiddleware} = require("../middleware/checkUser");
+const { checkUserMiddleware } = require("../middleware/checkUser");
 const AuthController = require("../controller/auth.controller");
+
+
 
 router.get("/google", passport.authenticate("google-auth", { scope: ['profile'] }))
 
@@ -10,6 +12,17 @@ router.get("/google/callback",
         successRedirect: "http://localhost:3000",
         failureRedirect: "http://localhost:3000"
     }));
+
+
+
+router.get("/github", passport.authenticate("github-auth", { scope: ['profile'] }))
+
+router.get("/github/callback",
+    passport.authenticate('github-auth', {
+        successRedirect: "http://localhost:3000",
+        failureRedirect: "http://localhost:3000"
+    }));
+
 
 router.post("/check", checkUserMiddleware, AuthController.check);
 

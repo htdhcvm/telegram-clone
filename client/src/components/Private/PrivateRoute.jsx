@@ -3,19 +3,18 @@ import { Redirect, Route } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
-const PrivateRoute = ({
-    component: Component,
-    user : userData,
-    ...rest
-}) => {
-    let state = useSelector(state => state.user)
+const PrivateRoute = ({ component: Component, user: userData, ...rest }) => {
+    let state = useSelector((state) => state.user);
 
-    console.log(state);
     return (
         <Route
             {...rest}
             render={(props) => {
-                return state.status === true ? (<Component/>) : (<Redirect to="/"/>);
+                return state.status === true ? (
+                    <Component />
+                ) : (
+                    <Redirect to='/' />
+                );
             }}
         />
     );

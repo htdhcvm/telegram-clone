@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import "./WhomDialog.scss";
+import './WhomDialog.scss';
+
+import { useSelector } from 'react-redux';
 
 const WhomDialog = () => {
-    return(
-        <div className="WhomDialog">
-            WhomDialog
+    const nameWhomDialog = useSelector((state) => state.user.whomDialog);
+
+    useEffect(() => {
+        console.log('Render WhomDialog');
+    });
+
+    return (
+        <div className='WhomDialog'>
+            <h4>{nameWhomDialog}</h4>
         </div>
-    )
-}
+    );
+};
 
 export default WhomDialog;

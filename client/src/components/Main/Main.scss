@@ -1,31 +1,4 @@
-.Main{
+.Main {
     display: grid;
-    grid-template-areas: 
-        "ListUsers WhomDialog"
-        "ListUsers ContentDialog"
-        "ListUsers FieldSendMessage"
-    ;
-
     grid-template-columns: 260px 1fr;
-    grid-template-rows: 50px 1fr 50px;
-
-    .ListUsers {
-        grid-area: ListUsers;
-    }
-
-    .WhomDialog{
-        grid-area: WhomDialog;
-        margin-left: 10px;
-    }
-    
-    .FieldSendMessage{
-        grid-area: FieldSendMessage;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    
-    .ContentDialog {
-        grid-area: ContentDialog;
-        margin-left: 10px;
-    }
 }

@@ -5,6 +5,10 @@ export const authTelegram = createAsyncThunk("user/AuthTelegram", async () => {
     window.open("http://localhost:3001/auth/google", "_self")
 })
 
+export const authGithub = createAsyncThunk("user/AuthGithub", async () => {
+    window.open("http://localhost:3001/auth/github", "_self")
+})
+
 
 export const checkAuth = createAsyncThunk("user/checkAuth", async () =>
     fetch("http://localhost:3001/auth/check", {
@@ -14,14 +18,12 @@ export const checkAuth = createAsyncThunk("user/checkAuth", async () =>
         .then(data => data)
 )
 
-
 export const logoutUser = createAsyncThunk("user/logoutUser", async () =>
     fetch("http://localhost:3001/auth/logout", {
         method: "POST",
         credentials: "include"
     }).then(response => response.status)
 );
-
 
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () =>
     fetch("http://localhost:3001/user/getAll", {
@@ -40,28 +42,36 @@ export const getCurrentUser = createAsyncThunk("user/currentUser", async () =>
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        status: false,
+        status: undefined,
         id: "",
         name: "",
         photo: "",
-        listUsers: []
+        listUsers: [],
+        whomDialog: ""
+    },
+    reducers: {
+        setWhomDialog(state, action) {
+            state.whomDialog = action.payload;
+        }
     },
     extraReducers: {
         [checkAuth.fulfilled]: (state, action) => {
-            console.log("Fulfilled", action);
+            // console.log("Fulfilled", action);
             if (action.payload.status === "success") {
                 state.status = true;
                 state.id = action.payload.id;
+                return state;
             }
+            state.status = false;
             return state;
         },
 
         [checkAuth.rejected]: (state, action) => {
-            console.log("Rejected", action);
+            // console.log("Rejected", action);
         },
 
         [logoutUser.fulfilled]: (state, action) => {
-            console.log("Fulfilled", action);
+            // console.log("Fulfilled", action);
             if (action.payload === 200) {
                 state.status = false;
                 state.id = "";
@@ -72,7 +82,7 @@ const userSlice = createSlice({
         },
 
         [logoutUser.rejected]: (state, action) => {
-            console.log("Rejected", action);
+            // console.log("Rejected", action);
         },
 
 
@@ -82,7 +92,7 @@ const userSlice = createSlice({
         },
 
         [getAllUsers.rejected]: (state, action) => {
-            console.log("Rejected", action);
+            // console.log("Rejected", action);
         },
 
 
@@ -94,15 +104,14 @@ const userSlice = createSlice({
         },
 
         [getCurrentUser.rejected]: (state, action) => {
-            console.log("Rejected", action);
+            // console.log("Rejected", action);
 
-        },
-
-
-
-
-        
+        }
     }
 })
+
+
+
+export const { setWhomDialog } = userSlice.actions;
 
 export default userSlice.reducer;

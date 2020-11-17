@@ -12,7 +12,6 @@ const usersRoutes = require("./routes/users");
 const messagesRoutes = require("./routes/messages")
 const cors = require("cors");
 
-
 const configuration = async (app) => {
 
     const RedisStore = connectRedis(session)

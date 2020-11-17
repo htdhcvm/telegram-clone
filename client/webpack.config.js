@@ -26,6 +26,13 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: ["style-loader", "css-loader", "sass-loader"]
+            }, 
+            {
+                test: /\.jpg$/,
+                loader : "file-loader",
+                options : {
+                    publicPath : "/dist/"
+                }
             }
         ]
     },
